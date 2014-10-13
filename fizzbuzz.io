@@ -1,13 +1,16 @@
-Fizzbuzz := Object clone
-Fizzbuzz test := method(expected, actual, if(expected == actual, "Pass, woo!" println, "Epic fail..." println))
-Fizzbuzz fizz := method(a, if(a % 3 == 0, "Fizz" println, a println))
-Fizzbuzz buzz := method(a, if(a % 5 == 0, "Buzz" println, a println))
+fizzbuzz := method(a, if(a % 15 == 0, "FizzBuzz" println, if(a % 5 == 0, "Buzz" println, if(a % 3 == 0, "Fizz" println, a println))))
+
+test := method(expected, actual, if(expected == actual, "Passed!" println, "Epic fail..." println))
 
 "Tests" println
-"It knows when a number is divisible by 3" println
-	Fizzbuzz test(Fizzbuzz fizz(1), 1)
-	Fizzbuzz test(Fizzbuzz fizz(3), "Fizz")
+"It knows when a number is divisible by 3"
+	test(fizzbuzz(1), 1)
+	test(fizzbuzz(3), "Fizz")
 
-"It knows when a number is divisible by 5" println 
-	Fizzbuzz test(Fizzbuzz buzz(1), 1)
-	Fizzbuzz test(Fizzbuzz buzz(5), "Buzz")
+"It knows when a number is divisible by 5"
+	test(fizzbuzz(7), 7)
+	test(fizzbuzz(10), "Buzz")
+
+"It knows when a number is divisble by both 3 AND 5"
+	test(fizzbuzz(11), 11)
+	test(fizzbuzz(15), "FizzBuzz")
